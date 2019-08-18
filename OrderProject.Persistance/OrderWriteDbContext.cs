@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using LNLOrder.Persistance.Configurations;
 
 namespace LNLOrder.Write.Persistance
 {
@@ -21,6 +22,10 @@ namespace LNLOrder.Write.Persistance
 
         public DbSet<Order> Orders { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.ApplyConfiguration(new CustomerConfiguration());
+        }
 
         public async Task<int> SaveChangesAsync()
         {

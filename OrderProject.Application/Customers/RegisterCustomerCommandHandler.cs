@@ -1,4 +1,5 @@
-﻿using LNLOrder.Write.Application.Abstraction;
+﻿using LNLOrder.Domain.ValueObjects;
+using LNLOrder.Write.Application.Abstraction;
 using LNLOrder.Write.Application.Infrastructure;
 using LNLOrder.Write.Domain.Entities;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace LNLOrder.Write.Application.Customers
             {
                 Adress = command.Adress,
                 Name = command.Name,
-                Email = command.Email
+                Email = new Email(command.Email)
             };
 
             _dbContext.Customers.Add(customer);
