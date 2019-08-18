@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MassTransit.RabbitMQ" Version="5.5.4" />
+    <ProjectReference Include="..\OrderWrite.Domain\LNLOrder.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OrderWrite.Application\LNLOrder.Application.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
   </ItemGroup>
 
 </Project>
