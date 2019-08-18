@@ -17,6 +17,7 @@ using LNLOrder.Write.Application.Orders;
 using LNLOrder.Write.Application.Orders.Commands;
 using LNLOrder.Application.Orders.Queries;
 using System.Collections.Generic;
+using App;
 
 namespace LNLOrder.Write
 {
@@ -61,7 +62,8 @@ namespace LNLOrder.Write
                 c.SwaggerDoc("v1", new Info { Title = "Order Write Api", Version = "v1" });
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(options => { options.Filters.Add(typeof(HttpGlobalExceptionFilter)); })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

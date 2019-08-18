@@ -1,5 +1,6 @@
-﻿using LNLOrder.Domain.Exceptions;
+﻿using App;
 using LNLOrder.Domain.Infrastructure;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 namespace LNLOrder.Domain.ValueObjects
@@ -16,9 +17,21 @@ namespace LNLOrder.Domain.ValueObjects
 
         public Email(string email)
         {
-            if (!email.Contains("@"))
+            if (!email.Contains("@") || email.Length <5)
             {
-                throw new InvalidEmailException("Invalid email address");
+                var validationProblemDetails = new ValidationProblemDetails()
+                {
+                    Detail = "Error while creating account. Please see errors for detail.",
+                    Title = "Register Error"
+                };
+
+                validationProblemDetails.Errors.Add(nameof(Email), new string[]
+                {
+                   "Email address length must be greater than 5 characters",
+                   "Email address must be valid format"
+                });
+
+                throw new CustomApiException(validationProblemDetails);
             }
 
             EmailAdress = email;

@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="GlobalExceptionFilter" Version="1.0.8" />
     <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="5.5.4" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="5.5.4" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
