@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OrderWrite.Domain\LNLOrder.Domain.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+    <ProjectReference Include="..\OrderProject.Domain\LNLOrder.Domain.csproj" />
   </ItemGroup>
 
 </Project>

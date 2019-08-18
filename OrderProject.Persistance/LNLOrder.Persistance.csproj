@@ -9,8 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OrderWrite.Application\LNLOrder.Application.csproj" />
-    <ProjectReference Include="..\OrderWrite.Domain\LNLOrder.Domain.csproj" />
+    <ProjectReference Include="..\OrderProject.Application\LNLOrder.Application.csproj" />
+    <ProjectReference Include="..\OrderProject.Domain\LNLOrder.Domain.csproj" />
   </ItemGroup>
 
 </Project>

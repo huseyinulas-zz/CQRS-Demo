@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OrderWrite.Application\LNLOrder.Application.csproj" />
-    <ProjectReference Include="..\OrderWrite.Persistance\LNLOrder.Persistance.csproj" />
+    <ProjectReference Include="..\OrderProject.Application\LNLOrder.Application.csproj" />
+    <ProjectReference Include="..\OrderProject.Persistance\LNLOrder.Persistance.csproj" />
   </ItemGroup>
 
 </Project>

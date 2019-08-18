@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OrderWrite.Application\LNLOrder.Application.csproj" />
+    <ProjectReference Include="..\OrderProject.Application\LNLOrder.Application.csproj" />
   </ItemGroup>
 
 </Project>
