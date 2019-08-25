@@ -32,9 +32,10 @@ namespace LNLOrder.Write
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<ICommandHandler<RegisterCustomerCommand>, RegisterCustomerCommandHandler>();
-            services.AddTransient<ICommandHandler<CreateProductCommand>, CreateProductCommandHandler>();
-            services.AddTransient<ICommandHandler<CreateOrderCommand>, CreateOrderCommandHandler>();
+            services.AddTransient<ICommandHandler<RegisterCustomerCommand>, CustomerCommandHandler>();
+            services.AddTransient<ICommandHandler<CreateProductCommand>, ProductCommandHandler>();
+            services.AddTransient<ICommandHandler<CreateOrderCommand>, OrderCommandHandler>();
+            services.AddTransient<ICommandHandler<CancelOrderCommand>, OrderCommandHandler>();
 
             services.AddTransient<INotificationService, NotificationService>();
 

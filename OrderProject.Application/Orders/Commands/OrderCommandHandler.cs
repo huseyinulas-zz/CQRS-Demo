@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace LNLOrder.Write.Application.Orders.Commands
 {
-    public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand>
+    public class OrderCommandHandler : ICommandHandler<CreateOrderCommand>, ICommandHandler<CancelOrderCommand>
     {
         private readonly IOrderWriteDbContext _dbContext;
         private readonly INotificationService _notificationService;
 
-        public CreateOrderCommandHandler(IOrderWriteDbContext dbContext, INotificationService notificationService)
+        public OrderCommandHandler(IOrderWriteDbContext dbContext, INotificationService notificationService)
         {
             _dbContext = dbContext;
             _notificationService= notificationService;
@@ -30,14 +30,26 @@ namespace LNLOrder.Write.Application.Orders.Commands
                 CustomerId = command.CustomerId,
                 ProductId = command.ProductId,
                 Quantity = command.Quantity,
-                Total = product.Price * command.Quantity
+                Total = product.Price * command.Quantity,
+                OrderStatus = "Approved"
             };
 
             _dbContext.Orders.Add(order);
 
             await _dbContext.SaveChangesAsync();
 
-            await _notificationService.Notify(new OrderCreatedEvent(order.OrderId, order.ProductId, order.CustomerId, order.Quantity, order.Total));
+            await _notificationService.Notify(new OrderCreatedEvent(order.OrderId, order.ProductId, order.CustomerId, order.Quantity, order.Total, order.OrderStatus));
+        }
+
+        public async Task Handle(CancelOrderCommand command)
+        {
+            var order = await _dbContext.Orders.FirstOrDefaultAsync(i => i.OrderId == command.OrderId);
+
+            order.OrderStatus = "Canceled";
+
+            await _dbContext.SaveChangesAsync();
+
+            await _notificationService.Notify(new OrderCanceledEvent(command.OrderId));
         }
     }
 }

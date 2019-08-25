@@ -21,7 +21,7 @@ namespace LNLOrder.ReadApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetOrderPreview()
         {
-            var orderList = await _queryHandler.Handle(new OrderPreviewQuery());
+            List<OrderPreviewDto> orderList = await _queryHandler.Handle(new OrderPreviewQuery());
 
             return Ok(orderList);
         }

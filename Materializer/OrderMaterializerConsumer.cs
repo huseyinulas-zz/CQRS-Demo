@@ -26,6 +26,7 @@ namespace Materializer
 
             _orderReadDbContext.OrderPreviews.Add(new OrderPreview
             {
+                OrderStatus = eventMessage.OrderStatus,
                 CustomerAddress = customer.Adress,
                 CustomerId = customer.CustomerId,
                 CustomerName = customer.Name,

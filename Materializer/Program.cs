@@ -32,6 +32,7 @@ namespace Materializer
                             services.AddMassTransit(x =>
                             {
                                 x.AddConsumer<OrderMaterializerConsumer>();
+                                x.AddConsumer<OrderCanceledConsumer>();
 
                                 x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(cfg =>
                                 {
@@ -43,7 +44,9 @@ namespace Materializer
                                     cfg.ReceiveEndpoint(host, "order.materializer", e =>
                                     {
                                         e.ConfigureConsumer<OrderMaterializerConsumer>(provider);
+                                        e.ConfigureConsumer<OrderCanceledConsumer>(provider);
                                     });
+
 
                                 }));
 

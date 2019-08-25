@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace LNLOrder.Write.Application.Products
 {
-    public class CreateProductCommandHandler : ICommandHandler<CreateProductCommand>
+    public class ProductCommandHandler : ICommandHandler<CreateProductCommand>
     {
         private readonly IOrderWriteDbContext _dbContext;
 
-        public CreateProductCommandHandler(IOrderWriteDbContext dbContext)
+        public ProductCommandHandler(IOrderWriteDbContext dbContext)
         {
             _dbContext = dbContext;
         }

@@ -24,7 +24,8 @@ namespace LNLOrder.Application.Orders.Queries
                 OrderId = i.OrderId,
                 ProductName = i.ProductName,
                 Quantity = i.Quantity,
-                Total = i.Total
+                Total = i.Total,
+                OrderStatus = i.OrderStatus
             })
             .ToListAsync();
 

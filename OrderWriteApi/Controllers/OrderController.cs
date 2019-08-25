@@ -9,17 +9,30 @@ namespace LNLOrder.Write.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
-        private readonly ICommandHandler<CreateOrderCommand> _commandHandler;
+        private readonly ICommandHandler<CreateOrderCommand> _creteOrderCommand;
+        private readonly ICommandHandler<CancelOrderCommand> _cancelOrderCommand;
 
-        public OrderController(ICommandHandler<CreateOrderCommand> commandHandler)
+        public OrderController(ICommandHandler<CreateOrderCommand> creteOrderCommand, ICommandHandler<CancelOrderCommand> cancelOrderCommand)
         {
-            _commandHandler = commandHandler;
+            _creteOrderCommand = creteOrderCommand;
+            _cancelOrderCommand = cancelOrderCommand;
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateOrder(CreateOrderCommand command)
         {
-            await _commandHandler.Handle(command);
+            await _creteOrderCommand.Handle(command);
+
+            return Ok();
+
+        }
+
+
+        [HttpPost]
+        [Route("Cancel")]
+        public async Task<IActionResult> CancelOrder(CancelOrderCommand command)
+        {
+            await _cancelOrderCommand.Handle(command);
 
             return Ok();
 
