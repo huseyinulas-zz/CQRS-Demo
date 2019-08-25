@@ -117,7 +117,7 @@ GO
 
 USE [OrderRead]
 GO
-/****** Object:  Table [dbo].[OrderPreviews]    Script Date: 18.08.2019 15:08:05 ******/
+/****** Object:  Table [dbo].[OrderPreviews]    Script Date: 25.08.2019 16:55:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -132,9 +132,11 @@ CREATE TABLE [dbo].[OrderPreviews](
 	[ProductName] [nvarchar](250) NOT NULL,
 	[Quantity] [int] NOT NULL,
 	[Total] [decimal](10, 2) NOT NULL,
+	[OrderStatus] [nvarchar](50) NULL,
  CONSTRAINT [PK_OrderPreview] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+
