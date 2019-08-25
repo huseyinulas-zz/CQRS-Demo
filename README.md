@@ -9,7 +9,7 @@ The repository is implementation of Clean Architecture and CQRS. However there i
 ### TODO's
 
 - [ ] Dockerize
-- [ ] Domain entities
+- [ ] DDD
 - [ ] Mediatr
 - [ ] Cross-Cutting Concerns
 - [ ] Validations
