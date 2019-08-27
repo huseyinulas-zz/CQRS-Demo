@@ -8,6 +8,7 @@ The repository is implementation of Clean Architecture and CQRS. However there i
 
 ### TODO's
 
+- [ ] Event Sourcing
 - [ ] Dockerize
 - [ ] DDD
 - [ ] Mediatr
